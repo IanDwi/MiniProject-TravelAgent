@@ -41,15 +41,12 @@ class DBWrapper {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Wisata: \(errmsg)")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Kota_Tujuan (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_tujuan TEXT)", nil, nil, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("ERROR: Error creating table Kota Tujuan: \(errmsg)")
-        }
+        
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Customer (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_customer TEXT, Alamat TEXT, nomor_tlp INTEGER, email TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Customer: \(errmsg)")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Penginapan (id INTEGER PRIMARY KEY AUTOINCREMENT, id_tujuan INTEGER, nama_penginapan TEXT, kualitas TEXT)", nil, nil, nil) != SQLITE_OK{
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Penginapan (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_penginapan TEXT, kualitas TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Penginapan: \(errmsg)")
         }
