@@ -36,6 +36,8 @@ class PilihTransportasiViewController: UIViewController, UITableViewDelegate, UI
         if let data = DBWrapper.sharedInstance.fetchTransportasi() {
             self.transportasi = data
             self.tableView.reloadData()
+            self.hapusButton.isHidden = true
+            self.ubahButton.isHidden = true
         }
         
     }
@@ -72,6 +74,10 @@ class PilihTransportasiViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @IBAction func selesaiButton(_ sender: UIBarButtonItem) {
+        if selectedTransportasi == nil {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Pilih salah satu")
+            return
+        }
         if self.delegate != nil && self.selectedTransportasi != nil {
             self.delegate?.selectTransportasiWillDismiss(param: selectedTransportasi!)
         }
@@ -113,6 +119,9 @@ class PilihTransportasiViewController: UIViewController, UITableViewDelegate, UI
                     if let data = DBWrapper.sharedInstance .fetchTransportasi() {
                         self.transportasi = data
                         self.tableView.reloadData()
+                        self.hapusButton.isHidden = true
+                        self.ubahButton.isHidden = true
+                        self.selectedTransportasi = nil
                     }
                     
                 })

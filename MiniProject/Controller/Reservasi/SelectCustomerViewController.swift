@@ -18,6 +18,8 @@ class SelectCustomerViewController: UIViewController, UITableViewDelegate, UITab
     var selectedCustomer: [String: String]?
     var delegate: SelectCustomerDelegate?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +43,10 @@ class SelectCustomerViewController: UIViewController, UITableViewDelegate, UITab
    
     
     @IBAction func doneButtonDidPushed(_ sender: UIBarButtonItem){
+        if selectedCustomer == nil {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Pilih salah satu")
+            return
+        }
         if self.delegate != nil && self.selectedCustomer != nil{
             self.delegate?.selectCustomerWillDismiss(param: self.selectedCustomer!)
         }

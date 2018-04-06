@@ -13,6 +13,7 @@ class ListCustomerViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var tableView: UITableView!
     var customer = [[String: String]]()
     var selectedCustomer: [String: String]?
+    
 
     
     override func viewDidLoad() {

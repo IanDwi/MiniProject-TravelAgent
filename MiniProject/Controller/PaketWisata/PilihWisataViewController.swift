@@ -38,6 +38,8 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         if let data = DBWrapper.sharedInstance.fetchWisata() {
             self.wisata = data
             self.tableView.reloadData()
+            self.hapusButton.isHidden = true
+            self.ubahButton.isHidden = true
             
         }
         
@@ -75,6 +77,10 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func selesaiButton(_ sender: UIBarButtonItem) {
+        if selectedWisata == nil {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Pilih salah satu")
+            return
+        }
         if self.delegate != nil && self.selectedWisata != nil {
             self.delegate?.selectWisataWillDismiss(param: selectedWisata!)
         }
@@ -110,6 +116,10 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
                     if let data = DBWrapper.sharedInstance .fetchWisata() {
                         self.wisata = data
                         self.tableView.reloadData()
+                        self.hapusButton.isHidden = true
+                        self.ubahButton.isHidden = true
+                        self.selectedWisata = nil
+                        
                     }
                     
                 })

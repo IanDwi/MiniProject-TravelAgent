@@ -56,7 +56,7 @@ class AddCustomerViewController: UIViewController {
         ]
         
         if DBWrapper.sharedInstance.doInsertCustomer(custData: param) == true {
-            Utilities.sharedInstance.showAlert(obj: self, title: "BERHASIL", message: "Berhasil menginput data customer")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "BERHASIL", message: "Berhasil menginput data customer")
         } else {
             Utilities.sharedInstance.showAlert(obj: self, title: "GAGAL", message: "Gagal menginput data customer")
         }

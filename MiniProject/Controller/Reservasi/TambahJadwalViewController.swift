@@ -85,7 +85,7 @@ class TambahJadwalViewController: UIViewController, UITextFieldDelegate {
             ]
         
         if DBWrapper.sharedInstance.doInsertJadwal(jadwal: param) == true {
-            Utilities.sharedInstance.showAlert(obj: self, title: "BERHASIL", message: "Berhasil menambah jadwal")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "BERHASIL", message: "Berhasil menambah jadwal")
         } else {
             Utilities.sharedInstance.showAlert(obj: self, title: "GAGAL", message: "Gagal menambah jadwal")
         }

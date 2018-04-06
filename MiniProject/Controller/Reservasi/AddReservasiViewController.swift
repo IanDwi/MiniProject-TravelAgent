@@ -74,7 +74,7 @@ class AddReservasiViewController: UIViewController, UITextFieldDelegate, SelectC
         
         if DBWrapper.sharedInstance.doInsertReservasi(reservasi: param) == true {
             
-            Utilities.sharedInstance.showAlert(obj: self, title: "BERHASIL", message: "Berhasil membuat reservasi")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "BERHASIL", message: "Berhasil membuat reservasi")
             
             
         } else {

@@ -35,6 +35,8 @@ class PilihPenginapanViewController: UIViewController, UITableViewDelegate, UITa
         if let data = DBWrapper.sharedInstance.fetchPenginapan() {
             self.penginapan = data
             self.tableView.reloadData()
+            self.hapusButton.isHidden = true
+            self.ubahButton.isHidden = true
         }
         
     }
@@ -71,6 +73,10 @@ class PilihPenginapanViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @IBAction func selesaiButton(_ sender: UIBarButtonItem) {
+        if selectedPenginapan == nil {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Pilih salah satu")
+            return
+        }
         if self.delegate != nil && self.selectedPenginapan != nil {
             self.delegate?.selectPenginapanWillDismiss(param: selectedPenginapan!)
         }
@@ -112,6 +118,9 @@ class PilihPenginapanViewController: UIViewController, UITableViewDelegate, UITa
                     if let data = DBWrapper.sharedInstance .fetchPenginapan() {
                         self.penginapan = data
                         self.tableView.reloadData()
+                        self.hapusButton.isHidden = true
+                        self.ubahButton.isHidden = true
+                        self.selectedPenginapan = nil
                     }
                     
                 })

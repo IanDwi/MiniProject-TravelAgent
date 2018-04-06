@@ -42,7 +42,7 @@ class TambahPenginapanViewController: UIViewController {
         ]
         
         if DBWrapper.sharedInstance.doInsertPenginapan(Penginapan: param) == true {
-            Utilities.sharedInstance.showAlert(obj: self, title: "SUCCES", message: "Sukses menambah data")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "SUKSES", message: "Sukses menambah data")
             self.navigationController?.popViewController(animated: true)
         }
         else {

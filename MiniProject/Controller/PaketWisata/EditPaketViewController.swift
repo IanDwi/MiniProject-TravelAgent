@@ -138,7 +138,7 @@ UINavigationControllerDelegate, SelectWisataDelegate, SelectPenginapanDelegate, 
         if DBWrapper.sharedInstance.doUpdatePaket(Paket: data) == true {
             DBWrapper.sharedInstance.doUpdatePaketStatus(Paket: selectedPaket!, status: "Tersedia")
             // succes
-            Utilities.sharedInstance.showAlert(obj: self, title: "SUKSES", message: "Paket telah diubah")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "SUKSES", message: "Paket telah diubah")
         }
         else {
             Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Ada masalah!")

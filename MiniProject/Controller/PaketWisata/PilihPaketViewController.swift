@@ -44,6 +44,10 @@ class PilihPaketViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func doneButtonDidPushed(_ sender: UIBarButtonItem){
+        if selectedPaket == nil {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Pilih salah satu")
+            return
+        }
         if self.delegate != nil && self.selectedPaket != nil{
             self.delegate?.pilihPaketWillDismiss(param: self.selectedPaket!)
         }

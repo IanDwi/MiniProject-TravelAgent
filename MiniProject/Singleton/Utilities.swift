@@ -13,11 +13,21 @@ class Utilities: NSObject {
     
     let loginDataKey = "kBatch141LoginData"
     
-    func showAlert(obj: UIViewController, title: String, message: String) {
+    func showAlert2(obj: UIViewController, title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "OK", style: .cancel) {
             (action) in alert.dismiss(animated: true, completion: nil)
             obj.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(ok)
+        obj.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert(obj: UIViewController, title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel) {
+            (action) in alert.dismiss(animated: true, completion: nil)
+  
         }
         alert.addAction(ok)
         obj.present(alert, animated: true, completion: nil)

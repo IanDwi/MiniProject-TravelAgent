@@ -42,7 +42,7 @@ class TambahTransportasiViewController: UIViewController {
         ]
         
         if DBWrapper.sharedInstance.doInsertTransportasi(Transportasi: param) == true {
-            Utilities.sharedInstance.showAlert(obj: self, title: "SUKSES", message: "Sukses menambah data")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "SUKSES", message: "Sukses menambah data")
             self.navigationController?.popViewController(animated: true)
         }
         else {

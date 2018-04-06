@@ -42,7 +42,7 @@ class DBWrapper {
             print("ERROR: Error creating table Wisata: \(errmsg)")
         }
         
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Customer (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_customer TEXT, Alamat TEXT, nomor_tlp INTEGER, email TEXT)", nil, nil, nil) != SQLITE_OK{
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Customer (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_customer TEXT, Alamat TEXT, nomor_tlp TEXT, email TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Customer: \(errmsg)")
         }
@@ -50,11 +50,11 @@ class DBWrapper {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Penginapan: \(errmsg)")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS PaketWisata (id INTEGER PRIMARY KEY AUTOINCREMENT, id_wisata INTEGER, id_penginapan INTEGER, id_transportasi INTEGER, lama_wisata TEXT, harga INTEGER, status TEXT, kapasitas TEXT, namaPaket TEXT, gambar TEXT, stock INTEGER)", nil, nil, nil) != SQLITE_OK{
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS PaketWisata (id INTEGER PRIMARY KEY AUTOINCREMENT, id_wisata INTEGER, id_penginapan INTEGER, id_transportasi INTEGER, lama_wisata TEXT, harga INTEGER, status TEXT DEFAULT 'Tersedia', kapasitas TEXT, namaPaket TEXT, gambar TEXT, stock INTEGER)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table PaketWisata: \(errmsg)")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Reservasi (id INTEGER PRIMARY KEY AUTOINCREMENT, id_customer INTEGER, id_paket INTEGER, status INTEGER, id_jadwal TEXT)", nil, nil, nil) != SQLITE_OK{
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Reservasi (id INTEGER PRIMARY KEY AUTOINCREMENT, id_customer INTEGER, id_paket INTEGER, status TEXT DEFAULT 'Dipesan', id_jadwal TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Resrevasi: \(errmsg)")
         }
@@ -187,7 +187,7 @@ class DBWrapper {
         let stock = Paket["stock"]!
         
         let queryString = "INSERT INTO PaketWisata (id_wisata, id_penginapan, id_transportasi, lama_wisata, harga, namaPaket, kapasitas, gambar, stock) VALUES ('\(idwisata)','\(idpenginapan)','\(idtransportasi)','\(lamaWisata)','\(harga)','\(namaPaket)','\(kapasitas)','\(gambar)','\(stock)')"
-        print("QUERY Tambah paket: \(queryString)")
+        //print("QUERY Tambah paket: \(queryString)")
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -212,7 +212,7 @@ class DBWrapper {
         let stock = Paket["stock"]!
         
         let queryString = "UPDATE PaketWisata SET id_wisata='\(idwisata)', id_penginapan='\(idpenginapan)', id_transportasi='\(idtransportasi)', lama_wisata='\(lamaWisata)', harga='\(harga)', namaPaket='\(namaPaket)', kapasitas='\(kapasitas)', gambar='\(gambar)', stock='\(stock)' WHERE id='\(idpaket)'"
-        print("QUERY UPDATE PAKET: \(queryString)")
+        //print("QUERY UPDATE PAKET: \(queryString)")
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -801,6 +801,35 @@ class DBWrapper {
             let tmp = [
                 "jenis": String(nama),
                 "nama": String(jenis)
+                
+            ]
+            penginapan?.append(tmp)
+        }
+        
+        return penginapan
+        
+    }
+    
+    func searchPelanggan(search: String) -> [[String: String]]? {
+        let queryString = "SELECT Customer.nama_customer, Customer.nomor_tlp FROM Customer WHERE Customer.nama_customer like '%\(search)%'"
+        print("QUERY FETCH Wisata: \(queryString)")
+        var stmt: OpaquePointer?
+        
+        var penginapan: [[String: String]]?
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("ERROR: ReadValues: Error preparing fetch Penginapan: \(errmsg)")
+        }
+        
+        penginapan = [[String: String]]()
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let telepon = sqlite3_column_int(stmt, 0)
+            let nama = String(cString: sqlite3_column_text(stmt, 1))
+            
+            let tmp = [
+                "nomor_telepon": String(telepon),
+                "nama_customer": String(nama)
                 
             ]
             penginapan?.append(tmp)

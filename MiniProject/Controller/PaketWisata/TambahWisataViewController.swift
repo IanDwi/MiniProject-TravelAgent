@@ -41,7 +41,7 @@ class TambahWisataViewController: UIViewController {
         ]
         
         if DBWrapper.sharedInstance.doInsertWisata(Wisata: param) == true {
-            Utilities.sharedInstance.showAlert(obj: self, title: "SUKSES", message: "Sukses menambah data")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "SUKSES", message: "Sukses menambah data")
             self.navigationController?.popViewController(animated: true)
         }
         else {

@@ -123,7 +123,7 @@ UINavigationControllerDelegate, SelectWisataDelegate, SelectPenginapanDelegate, 
         
         if DBWrapper.sharedInstance.doTambahPaket(Paket: data) == true {
             // succes
-            Utilities.sharedInstance.showAlert(obj: self, title: "SUKSES", message: "Paket telah ditambahkan")
+            Utilities.sharedInstance.showAlert2(obj: self, title: "SUKSES", message: "Paket telah ditambahkan")
         }
         else {
             Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Ada masalah!")

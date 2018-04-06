@@ -2125,7 +2125,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39H-aZ-7fO">
                                         <rect key="frame" x="239.5" y="0.0" width="119.5" height="30"/>
                                         <color key="backgroundColor" red="0.55516299579999995" green="0.73363942400000004" blue="0.9534026015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Delete">
+                                        <state key="normal" title="Hapus">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -2155,6 +2155,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="TAz-Jq-Uo5" id="UvN-VP-SzU"/>
+                        <outlet property="hapusButton" destination="39H-aZ-7fO" id="ZRi-xS-Xwh"/>
                         <outlet property="tableView" destination="6gY-1B-hob" id="wYr-R2-SzF"/>
                         <segue destination="Orr-zr-KK6" kind="show" identifier="TambahJadwalSegue" id="4J0-cH-VYY">
                             <nil key="action"/>

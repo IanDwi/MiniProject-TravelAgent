@@ -18,10 +18,15 @@ class ListJadwalViewController: UIViewController, UITableViewDelegate, UITableVi
     var selectedJadwal: [String: String]?
     var delegate: ListJadwalDelegate?
     
+    @IBOutlet var hapusButton: UIButton!
+    @IBOutlet var editButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.hapusButton.isHidden = true
+        self.editButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +35,8 @@ class ListJadwalViewController: UIViewController, UITableViewDelegate, UITableVi
         if let data = DBWrapper.sharedInstance.fetchJadwal(){
             self.jadwal = data
             self.tableView.reloadData()
+            self.hapusButton.isHidden = true
+            self.editButton.isHidden = true
         }
         
     }
@@ -49,6 +56,10 @@ class ListJadwalViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func doneButtonDidPushed(_ sender: UIBarButtonItem){
+        if selectedJadwal == nil {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Pilih salah satu")
+            return
+        }
         if self.delegate != nil && self.selectedJadwal != nil{
             self.delegate?.listJadwalWillDismiss(param: self.selectedJadwal!)
         }
@@ -116,6 +127,9 @@ class ListJadwalViewController: UIViewController, UITableViewDelegate, UITableVi
                 if let data = DBWrapper.sharedInstance.fetchJadwal(){
                     self.jadwal = data
                     self.tableView.reloadData()
+                    self.hapusButton.isHidden = true
+                    self.editButton.isHidden = true
+                    self.selectedJadwal = nil
                 }
                 
             } else {
