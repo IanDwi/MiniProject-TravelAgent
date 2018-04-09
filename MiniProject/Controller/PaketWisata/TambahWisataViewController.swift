@@ -12,6 +12,9 @@ class TambahWisataViewController: UIViewController {
     
     @IBOutlet var namaWisataTextField: UITextField!
     @IBOutlet var kotaWisataTextField: UITextField!
+    @IBOutlet var deskripsiTextView: UITextView!
+    
+    var selectedWisata: [String: String]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,9 @@ class TambahWisataViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+   
+    
     @IBAction func saveButton(_ sender: UIButton) {
         if self.namaWisataTextField.text == "" {
             Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Nama Wisata tidak boleh kosong")
@@ -32,11 +38,16 @@ class TambahWisataViewController: UIViewController {
             Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Kota Wisata tidak boleh kosong")
             return
         }
+        if self.deskripsiTextView.text == "" {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Deskripsi tidak boleh kosong")
+            return
+        }
         
         let param: [String: String] = [
             
             "nama_wisata": self.namaWisataTextField.text!,
-            "kota_wisata": self.kotaWisataTextField.text!
+            "kota_wisata": self.kotaWisataTextField.text!,
+            "deskripsi": self.deskripsiTextView.text!
             
         ]
         
@@ -51,14 +62,15 @@ class TambahWisataViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    
+   /* // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
+       
+    }*/
+ 
 
 }

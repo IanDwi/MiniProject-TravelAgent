@@ -25,6 +25,8 @@ class PilihPenginapanViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tmpbtn = UIBarButtonItem()
+        self.navigationItem.leftBarButtonItem = tmpbtn
         self.hapusButton.isHidden = true
         self.ubahButton.isHidden = true
     }
@@ -111,7 +113,7 @@ class PilihPenginapanViewController: UIViewController, UITableViewDelegate, UITa
                 "id": (self.selectedPenginapan?["id"])!
             ]
             if DBWrapper.sharedInstance.doDeletePenginapan(Penginapan: param) == true {
-                // Succes update movie
+                // Succes update 
                 let alert = UIAlertController(title: "SUKSES", message: "Penginapan Dihapus", preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
                     //reload controller

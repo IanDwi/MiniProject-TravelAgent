@@ -12,6 +12,7 @@ class UbahWisataViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var namaWisataTextField: UITextField!
     @IBOutlet var kotaWisataTextField: UITextField!
+    @IBOutlet var deskripsiTextView: UITextView!
     
     var selectedWisata: [String: String]?
 
@@ -21,6 +22,7 @@ class UbahWisataViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         self.namaWisataTextField.text = self.selectedWisata?["wisata"]     // menampilkan data ke text field
         self.kotaWisataTextField.text = self.selectedWisata?["kota"]
+        self.deskripsiTextView.text = self.selectedWisata?["deskripsi"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,16 +40,21 @@ class UbahWisataViewController: UIViewController, UITextFieldDelegate {
             Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Kota Wisata tidak boleh kosong")
             return
         }
+        if self.deskripsiTextView.text == "" {
+            Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Deskripsi tidak boleh kosong")
+            return
+        }
         
         let param: [String: String] = [
             "id": (self.selectedWisata?["id"])!,
             "nama_wisata": self.namaWisataTextField.text!,
-            "kota_wisata": self.kotaWisataTextField.text!
+            "kota_wisata": self.kotaWisataTextField.text!,
+            "deskripsi": self.deskripsiTextView.text!
             
         ]
         
         if DBWrapper.sharedInstance.doUpdateWisata(Wisata: param) == true {
-            // Succes update movie
+            // Succes update
             let alert = UIAlertController(title: "SUKSES", message: "Data Wisata Berhasil Diubah!", preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
                 
@@ -61,7 +68,7 @@ class UbahWisataViewController: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             
         } else {
-            // Failed update movie
+            // Failed update
             Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Something wrong happened")
         }
         

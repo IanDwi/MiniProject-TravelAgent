@@ -11,9 +11,10 @@ protocol SelectCustomerDelegate {
     func selectCustomerWillDismiss(param: [String: String])
 }
 
-class SelectCustomerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SelectCustomerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     var customer = [[String: String]]()
     var selectedCustomer: [String: String]?
     var delegate: SelectCustomerDelegate?
@@ -24,6 +25,8 @@ class SelectCustomerViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tmpbtn = UIBarButtonItem()
+        self.navigationItem.leftBarButtonItem = tmpbtn
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,6 +83,25 @@ class SelectCustomerViewController: UIViewController, UITableViewDelegate, UITab
         self.selectedCustomer = self.customer[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let cari = self.searchBar.text!
+        if self.searchBar.text! == ""{
+            if let data = DBWrapper.sharedInstance.fetchCustomer(){
+                self.customer = data
+                self.tableView.reloadData()
+            }
+            
+        }
+        else
+        {
+            if let data = DBWrapper.sharedInstance.searchPelanggan(search: cari)
+            {
+                self.customer = data
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Navigation

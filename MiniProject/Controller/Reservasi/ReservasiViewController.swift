@@ -73,8 +73,8 @@ class ReservasiViewController: UIViewController, UITableViewDataSource, UITableV
         let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertActionStyle.default) {
             (action) in
             
-            // do delete movie
-            let actionSheet = UIAlertController(title: self.selectedPaket?["namaPaket"], message: "Apa kamu yakin?", preferredStyle: UIAlertControllerStyle.alert)
+            // do delete 
+            let actionSheet = UIAlertController(title: "Hapus reservasi", message: "Apa kamu yakin?", preferredStyle: UIAlertControllerStyle.alert)
             
             let cancelAction = UIAlertAction(title: "Batal", style: UIAlertActionStyle.cancel) {
                 (action) in
@@ -88,9 +88,9 @@ class ReservasiViewController: UIViewController, UITableViewDataSource, UITableV
                 let param: [String: String] = [                         // parameter
                     "id": (self.selectedPaket?["id"])!
                 ]
-                if DBWrapper.sharedInstance.doDeletePaket(Paket: param) == true {
+                if DBWrapper.sharedInstance.doDeleteReservasi(reservasi: param) == true {
                     // Succes update
-                    let alert = UIAlertController(title: "SUKSES", message: "Paket Dihapus!", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "SUKSES", message: "Reservasi Dihapus!", preferredStyle: UIAlertControllerStyle.alert)
                     let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
                         //reload controller
                         if let data = DBWrapper.sharedInstance .fetchReservasi() {

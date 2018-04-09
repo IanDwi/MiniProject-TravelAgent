@@ -37,7 +37,7 @@ class DBWrapper {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Transportasi: \(errmsg)")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Wisata (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_wisata TEXT, kota_wisata TEXT)", nil, nil, nil) != SQLITE_OK{
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Wisata (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_wisata TEXT, kota_wisata TEXT, deskripsi TEXT)", nil, nil, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("ERROR: Error creating table Wisata: \(errmsg)")
         }
@@ -65,20 +65,55 @@ class DBWrapper {
         
     }
     
-    func doRegister(username: String, password: String) -> Bool {
-        var stmt: OpaquePointer?
-        let queryString = "INSERT INTO Admin (username, password) VALUES ('\(username)','\(password)')"
-        print("QUERY REGISTER: \(queryString)")
+    func doRegister() {
         
+        if fetchAdmin() == nil {
+            
+            var stmt: OpaquePointer?
+            let queryString = "INSERT INTO Admin (username, password) VALUES ('admin','admin')"
+            print("QUERY REGISTER: \(queryString)")
+            
+            if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("ERROR: SaveMethod: Error preparing insert: \(errmsg)")
+                
+            }
+            
+        }
+        
+    }
+    
+    func fetchAdmin() -> [[String: String]]? {
+        var stmt: OpaquePointer?
+        
+        let queryString = "SELECT Admin.username, Admin.password FROM Admin"
+        print("QUERY FETCH USERS: \(queryString)")
+        
+        var admin = [[String: String]]()
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("ERROR: SaveMethod: Error preparing insert: \(errmsg)")
-            return false
+            print("ERROR: ReadValues: Error preparing fetch admin: \(errmsg)")
+            return nil
         }
-        return sqlite3_step(stmt) == SQLITE_DONE
+        
+        while (sqlite3_step(stmt)) == SQLITE_ROW {
+            
+            let username = String(cString: sqlite3_column_text(stmt, 0))
+            let password = String(cString: sqlite3_column_text(stmt, 1))
+            
+            let tmp = [
+                
+                "username": String(username),
+                "password": String(password)
+            ]
+            admin.append(tmp)
+        }
+        
+        return admin
     }
     
     func doLogin(username: String, password: String) -> [String: String]? {
+        
         let queryString = "SELECT * FROM Admin WHERE Username='\(username)'AND password='\(password)'"
         print("QUERY LOGIN: \(queryString)")
         var stmt: OpaquePointer?
@@ -106,7 +141,7 @@ class DBWrapper {
     }
     
     func fetchPaket() -> [[String: String]]? {
-        let queryString = "SELECT PaketWisata.id, PaketWisata.namaPaket, Wisata.nama_wisata, Wisata.kota_wisata, Penginapan.nama_penginapan, PaketWisata.lama_wisata, Transportasi.jenis_kendaraan, Transportasi.nama_kendaraan, PaketWisata.kapasitas, PaketWisata.status, PaketWisata.harga, PaketWisata.gambar, PaketWisata.stock FROM PaketWisata INNER JOIN Wisata ON Wisata.id = PaketWisata.id_wisata INNER JOIN Penginapan ON Penginapan.id = PaketWisata.id_penginapan INNER JOIN Transportasi ON Transportasi.id = PaketWisata.id_transportasi WHERE PaketWisata.status = 'Tersedia'"
+        let queryString = "SELECT PaketWisata.id, PaketWisata.namaPaket, Wisata.nama_wisata, Wisata.kota_wisata, Penginapan.nama_penginapan, PaketWisata.lama_wisata, Transportasi.jenis_kendaraan, Transportasi.nama_kendaraan, PaketWisata.kapasitas, PaketWisata.status, PaketWisata.harga, PaketWisata.gambar, PaketWisata.stock, Wisata.id as id_wisata, Penginapan.id as id_penginapan, Transportasi.id as id_transportasi FROM PaketWisata INNER JOIN Wisata ON Wisata.id = PaketWisata.id_wisata INNER JOIN Penginapan ON Penginapan.id = PaketWisata.id_penginapan INNER JOIN Transportasi ON Transportasi.id = PaketWisata.id_transportasi WHERE PaketWisata.status = 'Tersedia'"
         print("QUERY FETCH PAKET: \(queryString)")
         var stmt: OpaquePointer?
         
@@ -132,6 +167,9 @@ class DBWrapper {
             let harga = String(cString: sqlite3_column_text(stmt, 10))
             let gambar = String(cString: sqlite3_column_text(stmt, 11))
             let stock = String(cString: sqlite3_column_text(stmt, 12))
+            let id_wisata = sqlite3_column_int(stmt, 13)
+            let id_penginapan = sqlite3_column_int(stmt, 14)
+            let id_transportasi = sqlite3_column_int(stmt, 15)
             
             let tmp = [
                 "id": String(id),
@@ -146,7 +184,10 @@ class DBWrapper {
                 "status": status,
                 "harga": harga,
                 "gambar": gambar,
-                "stock": stock
+                "stock": stock,
+                "id_wisata": String(id_wisata),
+                "id_penginapan": String(id_penginapan),
+                "id_transportasi": String(id_transportasi)
                 ]
             paket?.append(tmp)
         }
@@ -240,11 +281,13 @@ class DBWrapper {
             let id = sqlite3_column_int(stmt, 0)
             let wisata = String(cString: sqlite3_column_text(stmt, 1))
             let kota = String(cString: sqlite3_column_text(stmt, 2))
+            //let deskripsi = String(cString: sqlite3_column_text(stmt, 3))
             
             let tmp = [
                 "id": String(id),
                 "wisata": String(wisata),
-                "kota": String(kota)
+                "kota": String(kota),
+              //  "deskripsi": String(deskripsi)
                 ]
             Wisata.append(tmp)
         }
@@ -257,9 +300,9 @@ class DBWrapper {
         
         let nama = Wisata["nama_wisata"]!
         let kota = Wisata["kota_wisata"]!
-       
+        let deskripsi = Wisata["deskripsi"]!
         
-        let queryString = "INSERT INTO Wisata (nama_wisata, kota_wisata) VALUES ('\(nama)','\(kota)')"
+        let queryString = "INSERT INTO Wisata (nama_wisata, kota_wisata, deskripsi) VALUES ('\(nama)','\(kota)','\(deskripsi)')"
         print("QUERY REGISTER: \(queryString)")
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
@@ -722,6 +765,23 @@ class DBWrapper {
         
     }
     
+    func doDeleteReservasi(reservasi: [String: String]) -> Bool {
+        var stmt: OpaquePointer?
+        
+        let idreservasi = reservasi["id"]!
+        
+        let queryString = "DELETE FROM Reservasi WHERE id='\(idreservasi)'"
+        print("QUERY UPDATE MOVIE: \(queryString)")
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("ERROR: SaveMethod: Error preparing update: \(errmsg)")
+            return false
+        }
+        
+        return sqlite3_step(stmt) == SQLITE_DONE
+    }
+    
     
     func searchWisata(search: String) -> [[String: String]]? {
         let queryString = "SELECT Wisata.nama_wisata, Wisata.kota_wisata FROM Wisata WHERE Wisata.nama_wisata like '%\(search)%'"
@@ -824,13 +884,12 @@ class DBWrapper {
         
         penginapan = [[String: String]]()
         while(sqlite3_step(stmt) == SQLITE_ROW){
-            let telepon = sqlite3_column_int(stmt, 0)
-            let nama = String(cString: sqlite3_column_text(stmt, 1))
+            let nama = String(cString: sqlite3_column_text(stmt, 0))
+            let telepon = String(cString: sqlite3_column_text(stmt, 1))
             
             let tmp = [
-                "nomor_telepon": String(telepon),
-                "nama_customer": String(nama)
-                
+                "nama_customer": String(nama),
+                "nomor_tlp": String(telepon)
             ]
             penginapan?.append(tmp)
         }
@@ -920,6 +979,8 @@ class DBWrapper {
         
         return sqlite3_step(stmt) == SQLITE_DONE
     }
+    
+    
     
     
 

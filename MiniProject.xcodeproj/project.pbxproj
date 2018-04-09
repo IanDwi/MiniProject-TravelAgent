@@ -14,6 +14,7 @@
 		C82C2A80206CADA2002F81C5 /* HalamanUtamaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C2A7F206CADA2002F81C5 /* HalamanUtamaViewController.swift */; };
 		C82C2A82206CD19B002F81C5 /* PilihPenginapanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C2A81206CD19B002F81C5 /* PilihPenginapanViewController.swift */; };
 		C82C2A84206CD4C7002F81C5 /* TambahPenginapanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C2A83206CD4C7002F81C5 /* TambahPenginapanViewController.swift */; };
+		C83DCA1D207B609900DABF3D /* DetailWisataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83DCA1C207B609900DABF3D /* DetailWisataViewController.swift */; };
 		C84090702074688D00B3EDD7 /* DetailPaketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C840906F2074688D00B3EDD7 /* DetailPaketViewController.swift */; };
 		C840907C2074847C00B3EDD7 /* AddCustomerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84090732074847B00B3EDD7 /* AddCustomerViewController.swift */; };
 		C840907D2074847C00B3EDD7 /* EditJadwalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84090742074847B00B3EDD7 /* EditJadwalViewController.swift */; };
@@ -75,6 +76,7 @@
 		C82C2A7F206CADA2002F81C5 /* HalamanUtamaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalamanUtamaViewController.swift; sourceTree = "<group>"; };
 		C82C2A81206CD19B002F81C5 /* PilihPenginapanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilihPenginapanViewController.swift; sourceTree = "<group>"; };
 		C82C2A83206CD4C7002F81C5 /* TambahPenginapanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TambahPenginapanViewController.swift; sourceTree = "<group>"; };
+		C83DCA1C207B609900DABF3D /* DetailWisataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWisataViewController.swift; sourceTree = "<group>"; };
 		C840906F2074688D00B3EDD7 /* DetailPaketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPaketViewController.swift; sourceTree = "<group>"; };
 		C84090732074847B00B3EDD7 /* AddCustomerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCustomerViewController.swift; sourceTree = "<group>"; };
 		C84090742074847B00B3EDD7 /* EditJadwalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditJadwalViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				C8FA68A120723CBC00F3D52E /* TambahTransportasiViewController.swift */,
 				C8FA68A320723D6B00F3D52E /* UbahTransportasiViewController.swift */,
 				C840908D207493A000B3EDD7 /* PilihPaketViewController.swift */,
+				C83DCA1C207B609900DABF3D /* DetailWisataViewController.swift */,
 			);
 			path = PaketWisata;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				C84DC6F3206B59EB00C0BDA0 /* DBWrapper.swift in Sources */,
 				C8FA68A020722D3E00F3D52E /* PilihTransportasiViewController.swift in Sources */,
 				C84090832074847C00B3EDD7 /* ListCustomerViewController.swift in Sources */,
+				C83DCA1D207B609900DABF3D /* DetailWisataViewController.swift in Sources */,
 				C8FA68A220723CBC00F3D52E /* TambahTransportasiViewController.swift in Sources */,
 				C840907E2074847C00B3EDD7 /* AddReservasiViewController.swift in Sources */,
 				C84090812074847C00B3EDD7 /* UpdateCustomerViewController.swift in Sources */,

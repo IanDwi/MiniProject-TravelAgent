@@ -33,6 +33,7 @@ UINavigationControllerDelegate, SelectWisataDelegate, SelectPenginapanDelegate, 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+       
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
@@ -40,6 +41,19 @@ UINavigationControllerDelegate, SelectWisataDelegate, SelectPenginapanDelegate, 
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // TODO: Fetch all users
+        
+        //let userid = self.selectedUser!["id"]!
+        if selectedWisata == nil {
+            self.namaWisataTextField?.text = ""
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,17 +148,17 @@ UINavigationControllerDelegate, SelectWisataDelegate, SelectPenginapanDelegate, 
     
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == self.namaWisataTextField                  // mengecek apakan uername atau movies
+        if textField == self.namaWisataTextField                  // mengecek
         {
             self.performSegue(withIdentifier: "PilihWisataSegue", sender: self)
             return false
         }
-        if textField == self.namaPenginapanTextField                  // mengecek apakan uername atau movies
+        if textField == self.namaPenginapanTextField                  // mengecek
         {
             self.performSegue(withIdentifier: "PilihPenginapanSegue", sender: self)
             return false
         }
-        if textField == self.namaTransportasiTextField                  // mengecek apakan uername atau movies
+        if textField == self.namaTransportasiTextField                  // mengecek 
         {
             self.performSegue(withIdentifier: "PilihTransportasiSegue", sender: self)
             return false

@@ -30,7 +30,7 @@ class PilihPaketViewController: UIViewController, UITableViewDataSource, UITable
         
         // TODO: Fetch all users
         
-        //let userid = self.selectedUser!["id"]!
+       
         if let data = DBWrapper.sharedInstance.fetchPaket() {
             self.paket = data
             self.tableView.reloadData()

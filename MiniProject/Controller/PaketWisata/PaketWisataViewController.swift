@@ -92,7 +92,7 @@ class PaketWisataViewController: UIViewController, UITableViewDataSource, UITabl
         let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertActionStyle.default) {
             (action) in
             
-            // do delete movie
+            // do delete
             let actionSheet = UIAlertController(title: self.selectedPaket?["namaPaket"], message: "Apa kamu yakin?", preferredStyle: UIAlertControllerStyle.alert)
             
             let cancelAction = UIAlertAction(title: "Batal", style: UIAlertActionStyle.cancel) {
@@ -108,7 +108,7 @@ class PaketWisataViewController: UIViewController, UITableViewDataSource, UITabl
                     "id": (self.selectedPaket?["id"])!
                 ]
                 if DBWrapper.sharedInstance.doDeletePaket(Paket: param) == true {
-                    // Succes update movie
+                    // Succes update
                     let alert = UIAlertController(title: "SUKSES", message: "Paket Dihapus!", preferredStyle: UIAlertControllerStyle.alert)
                     let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
                         //reload controller
@@ -123,7 +123,7 @@ class PaketWisataViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     
                 } else {
-                    // Failed delete movie
+                    // Failed delete
                     Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Ada masalah!")
                 }
             }
@@ -169,6 +169,19 @@ class PaketWisataViewController: UIViewController, UITableViewDataSource, UITabl
         if segue.identifier == "EditPaketSegue" {
             let obj = segue.destination as! EditPaketViewController
             obj.selectedPaket = self.selectedPaket
+            
+            obj.selectedWisata = [
+                "id": self.selectedPaket!["id_wisata"]!,
+                "nama_wisata": self.selectedPaket!["nama_wisata"]!
+            ]
+            obj.selectedPenginapan = [
+                "id": self.selectedPaket!["id_penginapan"]!,
+                "nama_penginapan": self.selectedPaket!["nama_penginapan"]!
+            ]
+            obj.selectedTransportasi = [
+                "id": self.selectedPaket!["id_transportasi"]!,
+                "nama_kendaraan": self.selectedPaket!["nama_kendaraan"]!
+            ]
         }
     }
     

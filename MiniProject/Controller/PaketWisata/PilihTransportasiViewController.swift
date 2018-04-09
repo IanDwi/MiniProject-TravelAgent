@@ -26,6 +26,8 @@ class PilihTransportasiViewController: UIViewController, UITableViewDelegate, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tmpbtn = UIBarButtonItem()
+        self.navigationItem.leftBarButtonItem = tmpbtn
         self.hapusButton.isHidden = true
         self.ubahButton.isHidden = true
     }
@@ -112,7 +114,7 @@ class PilihTransportasiViewController: UIViewController, UITableViewDelegate, UI
                 "id": (self.selectedTransportasi?["id"])!
             ]
             if DBWrapper.sharedInstance.doDeleteTransportasi(Transportasi: param) == true {
-                // Succes update movie
+                // Succes update 
                 let alert = UIAlertController(title: "SUKSES", message: "Penginapan Dihapus", preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
                     //reload controller

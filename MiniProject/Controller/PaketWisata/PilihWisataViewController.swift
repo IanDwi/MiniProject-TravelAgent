@@ -18,6 +18,7 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var hapusButton: UIButton!
     @IBOutlet var ubahButton: UIButton!
     @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var detailButton: UIBarButtonItem!
     
     var wisata = [[String: String]]()
     var selectedWisata: [String: String]?
@@ -27,8 +28,11 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //let tmpbtn = UIBarButtonItem()
+        //self.navigationItem.leftBarButtonItem = tmpbtn
         self.hapusButton.isHidden = true
         self.ubahButton.isHidden = true
+        self.detailButton.isEnabled = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,6 +54,10 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func detailButton(_ sender: UIBarButtonItem){
+        self.performSegue(withIdentifier: "DetailWisataSegue", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.wisata.count
     }
@@ -62,6 +70,7 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         
         if self.selectedWisata != nil && person["wisata"] == self.selectedWisata!["wisata"] {
             cell.accessoryType = .checkmark
+            
         } else {
             cell.accessoryType = .none
         }
@@ -74,6 +83,7 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.reloadData()
         self.hapusButton.isHidden = false
         self.ubahButton.isHidden = false
+        self.detailButton.isEnabled = true
     }
     
     @IBAction func selesaiButton(_ sender: UIBarButtonItem) {
@@ -109,7 +119,7 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
                 "id": (self.selectedWisata?["id"])!
             ]
             if DBWrapper.sharedInstance.doDeleteWisata(Wisata: param) == true {
-                // Succes update movie
+                // Succes update
                 let alert = UIAlertController(title: "SUKSES", message: "Objek Wisata Dihapus", preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
                     //reload controller
@@ -177,6 +187,10 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         // Pass the selected object to the new view controller.
         if segue.identifier == "UbahWisataSegue" {
             let obj = segue.destination as! UbahWisataViewController
+            obj.selectedWisata = self.selectedWisata
+        }
+        if segue.identifier == "DetailWisataSegue" {
+            let obj = segue.destination as! DetailWisataViewController
             obj.selectedWisata = self.selectedWisata
         }
        

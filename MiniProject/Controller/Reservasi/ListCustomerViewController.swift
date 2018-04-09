@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ListCustomerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ListCustomerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     var customer = [[String: String]]()
     var selectedCustomer: [String: String]?
     
@@ -20,6 +21,7 @@ class ListCustomerViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+   
         
     }
     
@@ -134,6 +136,25 @@ class ListCustomerViewController: UIViewController, UITableViewDelegate, UITable
         
         // deselect row
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let cari = self.searchBar.text!
+        if self.searchBar.text! == ""{
+            if let data = DBWrapper.sharedInstance.fetchCustomer(){
+                self.customer = data
+                self.tableView.reloadData()
+            }
+            
+        }
+        else
+        {
+            if let data = DBWrapper.sharedInstance.searchPelanggan(search: cari)
+            {
+                self.customer = data
+                self.tableView.reloadData()
+            }
+        }
     }
  
 

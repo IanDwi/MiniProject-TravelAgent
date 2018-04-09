@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+/*
     @IBAction func registerButton(_ sender: UIButton){
         
         //Validation
@@ -51,7 +51,7 @@ class RegisterViewController: UIViewController {
         }
         
     }
-    
+*/
 
     /*
     // MARK: - Navigation

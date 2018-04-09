@@ -47,7 +47,7 @@ class UbahTransportasiViewController: UIViewController, UITextFieldDelegate {
         ]
         
         if DBWrapper.sharedInstance.doUpdateTransportasi(Transportasi: param) == true {
-            // Succes update movie
+            // Succes update
             let alert = UIAlertController(title: "SUKSES", message: "Data Transportasi Berhasil Diubah!", preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
                 
@@ -61,7 +61,7 @@ class UbahTransportasiViewController: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             
         } else {
-            // Failed update movie
+            // Failed update
             Utilities.sharedInstance.showAlert(obj: self, title: "ERROR", message: "Ada Masalah!")
         }
         
