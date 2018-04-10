@@ -13,7 +13,7 @@ class DetailWisataViewController: UIViewController {
     
     @IBOutlet var namaWisataLabel: UILabel!
     @IBOutlet var kotaWisata: UILabel!
-    @IBOutlet var deskripsi: UILabel!
+    @IBOutlet var deskripsi: UITextView!
     
     var selectedWisata: [String: String]?
 
@@ -21,8 +21,8 @@ class DetailWisataViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.namaWisataLabel?.text = self.selectedWisata?["nama_wisata"]
-        self.kotaWisata?.text = self.selectedWisata?["kota_wisata"]
+        self.namaWisataLabel?.text = self.selectedWisata?["wisata"]
+        self.kotaWisata?.text = self.selectedWisata?["kota"]
         self.deskripsi?.text = self.selectedWisata?["deskripsi"]
     }
 

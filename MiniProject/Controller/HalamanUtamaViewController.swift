@@ -34,6 +34,16 @@ class HalamanUtamaViewController: UIViewController {
     @IBAction func reservasiButtonDidPushed(_ sender: UIButton){
         self.performSegue(withIdentifier: "ReservasiSegue", sender: self)
     }
+    @IBAction func wisataButton(_ sender: UIButton){
+        self.performSegue(withIdentifier: "masterWisataSegue", sender: self)
+        
+    }
+    @IBAction func penginapanButton(_ sender: UIButton){
+        self.performSegue(withIdentifier: "masterPenginapanSegue", sender: self)
+    }
+    @IBAction func transportasiButton(_ sender: UIButton){
+        self.performSegue(withIdentifier: "masterTransportasiSegue", sender: self)
+    }
 
     /*
     // MARK: - Navigation

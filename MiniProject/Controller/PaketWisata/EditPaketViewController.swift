@@ -211,17 +211,20 @@ UINavigationControllerDelegate, SelectWisataDelegate, SelectPenginapanDelegate, 
             let obj = segue.destination as! PilihWisataViewController
             obj.delegate = self
             obj.selectedWisata = self.selectedWisata
+            obj.showButtons = false
         }
         if segue.identifier == "PilihPenginapanSegue" {
             let obj = segue.destination as! PilihPenginapanViewController
             obj.delegate = self
             obj.selectedPenginapan = self.selectedPenginapan
+            obj.showButtons = false
         }
         
         if segue.identifier == "PilihTransportasiSegue" {
             let obj = segue.destination as! PilihTransportasiViewController
             obj.delegate = self
             obj.selectedTransportasi = self.selectedTransportasi
+            obj.showButtons = false
         }
     }
     

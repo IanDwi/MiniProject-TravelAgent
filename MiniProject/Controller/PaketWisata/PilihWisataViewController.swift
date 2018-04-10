@@ -17,12 +17,16 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var tableView: UITableView!
     @IBOutlet var hapusButton: UIButton!
     @IBOutlet var ubahButton: UIButton!
+    @IBOutlet var tambahButton: UIButton!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var detailButton: UIBarButtonItem!
+    
     
     var wisata = [[String: String]]()
     var selectedWisata: [String: String]?
     var delegate: SelectWisataDelegate?
+    
+    var showButtons: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +34,26 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         //let tmpbtn = UIBarButtonItem()
         //self.navigationItem.leftBarButtonItem = tmpbtn
-        self.hapusButton.isHidden = true
-        self.ubahButton.isHidden = true
-        self.detailButton.isEnabled = false
+        self.setUpButtons()
+    }
+    
+    func setUpButtons() {
+        if self.showButtons == true {
+            self.hapusButton.isHidden = true
+            self.ubahButton.isHidden = true
+            self.detailButton.isEnabled = false
+            //self.hiddenselesai.isEnabled = false
+            let tmpbtn = UIBarButtonItem()
+            self.navigationItem.rightBarButtonItem = tmpbtn
+            
+        } else {
+            self.hapusButton.isHidden = true
+            self.ubahButton.isHidden = true
+            self.tambahButton.isHidden = true
+            self.detailButton.isEnabled = false
+            let tmpbtn = UIBarButtonItem()
+            self.navigationItem.leftBarButtonItem = tmpbtn
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -81,9 +102,12 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
         self.selectedWisata = self.wisata[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         self.tableView.reloadData()
+        
+        if self.showButtons == true {
         self.hapusButton.isHidden = false
         self.ubahButton.isHidden = false
         self.detailButton.isEnabled = true
+        }
     }
     
     @IBAction func selesaiButton(_ sender: UIBarButtonItem) {

@@ -16,20 +16,39 @@ class PilihTransportasiViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet var tableView: UITableView!
     @IBOutlet var hapusButton: UIButton!
     @IBOutlet var ubahButton: UIButton!
+    @IBOutlet var tambahButton: UIButton!
     @IBOutlet var searchBar: UISearchBar!
     
     var transportasi = [[String: String]]()
     var selectedTransportasi: [String: String]?
     var delegate: SelectTransportasiDelegate?
+    
+    var showButtons: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let tmpbtn = UIBarButtonItem()
-        self.navigationItem.leftBarButtonItem = tmpbtn
-        self.hapusButton.isHidden = true
-        self.ubahButton.isHidden = true
+        self.setUpButtons()
+    }
+    
+    func setUpButtons() {
+        if self.showButtons == true {
+            self.hapusButton.isHidden = true
+            self.ubahButton.isHidden = true
+            //self.detailButton.isEnabled = false
+            //self.hiddenselesai.isEnabled = false
+            let tmpbtn = UIBarButtonItem()
+            self.navigationItem.rightBarButtonItem = tmpbtn
+            
+        } else {
+            self.hapusButton.isHidden = true
+            self.ubahButton.isHidden = true
+            self.tambahButton.isHidden = true
+            //self.detailButton.isEnabled = false
+            let tmpbtn = UIBarButtonItem()
+            self.navigationItem.leftBarButtonItem = tmpbtn
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,8 +90,10 @@ class PilihTransportasiViewController: UIViewController, UITableViewDelegate, UI
         self.selectedTransportasi = self.transportasi[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         self.tableView.reloadData()
-        self.hapusButton.isHidden = false
-        self.ubahButton.isHidden = false
+        if self.showButtons == true {
+            self.hapusButton.isHidden = false
+            self.ubahButton.isHidden = false
+        }
     }
     
     @IBAction func selesaiButton(_ sender: UIBarButtonItem) {

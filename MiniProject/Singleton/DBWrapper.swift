@@ -281,13 +281,13 @@ class DBWrapper {
             let id = sqlite3_column_int(stmt, 0)
             let wisata = String(cString: sqlite3_column_text(stmt, 1))
             let kota = String(cString: sqlite3_column_text(stmt, 2))
-            //let deskripsi = String(cString: sqlite3_column_text(stmt, 3))
+            let deskripsi = String(cString: sqlite3_column_text(stmt, 3))
             
             let tmp = [
                 "id": String(id),
                 "wisata": String(wisata),
                 "kota": String(kota),
-              //  "deskripsi": String(deskripsi)
+                "deskripsi": String(deskripsi)
                 ]
             Wisata.append(tmp)
         }
