@@ -51,8 +51,7 @@ class PilihWisataViewController: UIViewController, UITableViewDelegate, UITableV
             self.ubahButton.isHidden = true
             self.tambahButton.isHidden = true
             self.detailButton.isEnabled = false
-            let tmpbtn = UIBarButtonItem()
-            self.navigationItem.leftBarButtonItem = tmpbtn
+            
         }
     }
     override func viewWillAppear(_ animated: Bool) {

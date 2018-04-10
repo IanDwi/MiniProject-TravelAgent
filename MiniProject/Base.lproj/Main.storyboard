@@ -42,145 +42,147 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L86-OP-guK">
-                                <rect key="frame" x="60" y="264" width="255" height="363"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="rPh-72-uw9">
+                                <rect key="frame" x="25" y="276" width="325" height="100"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-fL-9jQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="114.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A8V-74-Vgr">
-                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="114.5"/>
-                                                <state key="normal" backgroundImage="Paket">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Paket Wisata">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.0090418781725888353" green="0.0042398683753857554" blue="0.00083219902111928454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </state>
-                                                <connections>
-                                                    <action selector="pilihPaket:" destination="8hV-S1-zNV" eventType="touchUpInside" id="4io-HK-q4l"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wt8-cw-tCe">
-                                                <rect key="frame" x="132.5" y="0.0" width="122.5" height="114.5"/>
-                                                <state key="normal" backgroundImage="reservasi">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Reservasi">
-                                                            <attributes>
-                                                                <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </state>
-                                                <connections>
-                                                    <action selector="reservasiButtonDidPushed:" destination="8hV-S1-zNV" eventType="touchUpInside" id="PgY-nV-Vlq"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rPh-72-uw9">
-                                        <rect key="frame" x="0.0" y="124.5" width="255" height="114"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Rb-wl-sRX">
-                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="114"/>
-                                                <state key="normal" backgroundImage="wisata">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Wisata">
-                                                            <attributes>
-                                                                <color key="NSBackgroundColor" red="0.81759597081218272" green="0.81759597081218272" blue="0.81759597081218272" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </state>
-                                                <connections>
-                                                    <action selector="wisataButton:" destination="8hV-S1-zNV" eventType="touchUpInside" id="f4H-7r-xKh"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLt-zd-rbh">
-                                                <rect key="frame" x="132.5" y="0.0" width="122.5" height="114"/>
-                                                <state key="normal" backgroundImage="customer">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content=" Pelanggan">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.0090418781725888353" green="0.0042398683753857554" blue="0.00083219902111928454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </state>
-                                                <connections>
-                                                    <action selector="customerButtonDidPushed:" destination="8hV-S1-zNV" eventType="touchUpInside" id="SSH-2q-Eac"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SSt-5S-Z1l">
-                                        <rect key="frame" x="0.0" y="248.5" width="255" height="114.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YD2-5B-60H">
-                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="114.5"/>
-                                                <state key="normal" backgroundImage="transportasi">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Transportasi">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </state>
-                                                <connections>
-                                                    <action selector="transportasiButton:" destination="8hV-S1-zNV" eventType="touchUpInside" id="yhc-9j-jb9"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwA-G9-48V">
-                                                <rect key="frame" x="132.5" y="0.0" width="122.5" height="114.5"/>
-                                                <state key="normal" backgroundImage="penginapan">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Penginapan">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </state>
-                                                <connections>
-                                                    <action selector="penginapanButton:" destination="8hV-S1-zNV" eventType="touchUpInside" id="DGB-2I-fdi"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Rb-wl-sRX">
+                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="100"/>
+                                        <state key="normal" backgroundImage="wisata">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Wisata">
+                                                    <attributes>
+                                                        <color key="NSBackgroundColor" red="0.81759597081218272" green="0.81759597081218272" blue="0.81759597081218272" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="8" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="wisataButton:" destination="8hV-S1-zNV" eventType="touchUpInside" id="f4H-7r-xKh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLt-zd-rbh">
+                                        <rect key="frame" x="117.5" y="0.0" width="90" height="100"/>
+                                        <state key="normal" backgroundImage="customer">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content=" Pelanggan">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0090418781725888353" green="0.0042398683753857554" blue="0.00083219902111928454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="8" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="customerButtonDidPushed:" destination="8hV-S1-zNV" eventType="touchUpInside" id="SSH-2q-Eac"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwA-G9-48V">
+                                        <rect key="frame" x="235.5" y="0.0" width="89.5" height="100"/>
+                                        <state key="normal" backgroundImage="penginapan">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Penginapan">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="8" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="penginapanButton:" destination="8hV-S1-zNV" eventType="touchUpInside" id="DGB-2I-fdi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="uvb-92-mn0"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="SSt-5S-Z1l">
+                                <rect key="frame" x="80" y="408" width="215" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YD2-5B-60H">
+                                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="100"/>
+                                        <state key="normal" backgroundImage="transportasi">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Transportasi">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="8" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="transportasiButton:" destination="8hV-S1-zNV" eventType="touchUpInside" id="yhc-9j-jb9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A8V-74-Vgr">
+                                        <rect key="frame" x="121.5" y="0.0" width="93.5" height="100"/>
+                                        <state key="normal" backgroundImage="Paket">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Paket Wisata">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0090418781725888353" green="0.0042398683753857554" blue="0.00083219902111928454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="8" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="pilihPaket:" destination="8hV-S1-zNV" eventType="touchUpInside" id="4io-HK-q4l"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="B7k-MC-bTV"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-fL-9jQ">
+                                <rect key="frame" x="90" y="540" width="195" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wt8-cw-tCe">
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="80"/>
+                                        <state key="normal" backgroundImage="reservasi">
+                                            <attributedString key="attributedTitle"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="reservasiButtonDidPushed:" destination="8hV-S1-zNV" eventType="touchUpInside" id="PgY-nV-Vlq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="ATg-I1-fUJ"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9MO-d7-tfi" firstAttribute="top" secondItem="2R8-ZN-FIi" secondAttribute="bottom" constant="2" id="29V-hu-hSt"/>
                             <constraint firstItem="HXd-IC-Axo" firstAttribute="trailing" secondItem="TSa-5X-3ng" secondAttribute="trailing" id="2Ra-Gc-Fh1"/>
-                            <constraint firstItem="L86-OP-guK" firstAttribute="leading" secondItem="HXd-IC-Axo" secondAttribute="leading" constant="60" id="93a-Fy-tbY"/>
+                            <constraint firstItem="rPh-72-uw9" firstAttribute="leading" secondItem="HXd-IC-Axo" secondAttribute="leading" constant="25" id="2vr-N8-D9T"/>
+                            <constraint firstAttribute="trailing" secondItem="rPh-72-uw9" secondAttribute="trailing" constant="25" id="4ME-LK-pya"/>
+                            <constraint firstItem="SSt-5S-Z1l" firstAttribute="leading" secondItem="HXd-IC-Axo" secondAttribute="leading" constant="80" id="8y5-9s-agf"/>
+                            <constraint firstItem="SSt-5S-Z1l" firstAttribute="top" secondItem="rPh-72-uw9" secondAttribute="bottom" constant="32" id="CuM-Ab-bgL"/>
+                            <constraint firstItem="kbZ-fL-9jQ" firstAttribute="top" secondItem="SSt-5S-Z1l" secondAttribute="bottom" constant="32" id="OWC-jz-ypI"/>
                             <constraint firstItem="HXd-IC-Axo" firstAttribute="trailing" secondItem="2R8-ZN-FIi" secondAttribute="trailing" constant="100" id="OZw-Kc-sa4"/>
+                            <constraint firstAttribute="trailing" secondItem="SSt-5S-Z1l" secondAttribute="trailing" constant="80" id="QED-rs-nnO"/>
                             <constraint firstItem="9MO-d7-tfi" firstAttribute="leading" secondItem="HXd-IC-Axo" secondAttribute="leading" id="SME-GE-pVn"/>
                             <constraint firstItem="2R8-ZN-FIi" firstAttribute="leading" secondItem="HXd-IC-Axo" secondAttribute="leading" constant="100" id="Yh9-qc-TwC"/>
                             <constraint firstItem="TSa-5X-3ng" firstAttribute="top" secondItem="HXd-IC-Axo" secondAttribute="top" id="b5N-Wo-Mf7"/>
                             <constraint firstItem="9MO-d7-tfi" firstAttribute="trailing" secondItem="HXd-IC-Axo" secondAttribute="trailing" id="bBd-OK-Slv"/>
                             <constraint firstAttribute="bottom" secondItem="TSa-5X-3ng" secondAttribute="bottom" id="dbI-dG-iZB"/>
                             <constraint firstItem="2R8-ZN-FIi" firstAttribute="top" secondItem="HXd-IC-Axo" secondAttribute="top" constant="8" id="hzJ-Yx-fWG"/>
-                            <constraint firstAttribute="trailing" secondItem="L86-OP-guK" secondAttribute="trailing" constant="60" id="iMQ-lB-rWv"/>
-                            <constraint firstItem="L86-OP-guK" firstAttribute="top" secondItem="HXd-IC-Axo" secondAttribute="top" constant="200" id="rFf-B4-UUR"/>
+                            <constraint firstItem="rPh-72-uw9" firstAttribute="top" secondItem="9MO-d7-tfi" secondAttribute="bottom" constant="17" id="k1k-SE-AqJ"/>
+                            <constraint firstItem="kbZ-fL-9jQ" firstAttribute="leading" secondItem="HXd-IC-Axo" secondAttribute="leading" constant="90" id="kci-iE-zrR"/>
+                            <constraint firstItem="HXd-IC-Axo" firstAttribute="trailing" secondItem="kbZ-fL-9jQ" secondAttribute="trailing" constant="90" id="wMs-gw-fnR"/>
                             <constraint firstItem="TSa-5X-3ng" firstAttribute="leading" secondItem="HXd-IC-Axo" secondAttribute="leading" id="z8u-SB-Fwg"/>
-                            <constraint firstAttribute="bottom" secondItem="L86-OP-guK" secondAttribute="bottom" constant="40" id="zkf-D6-Vmn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HXd-IC-Axo"/>
                     </view>
@@ -3337,7 +3339,7 @@
         <image name="customer" width="128" height="128"/>
         <image name="defaultomg" width="256" height="256"/>
         <image name="penginapan" width="256" height="256"/>
-        <image name="reservasi" width="150" height="150"/>
+        <image name="reservasi" width="200" height="84"/>
         <image name="transportasi" width="256" height="256"/>
         <image name="travel" width="568" height="207"/>
         <image name="wisata" width="256" height="256"/>
